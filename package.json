@@ -10,7 +10,10 @@
     "dev": "nodemon src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "migration:generate": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d src/database/database.ts src/database/migrations/migrationName",
+    "migration:run": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d src/database/database.ts",
+    "migration:revert": "npm run typeorm migration:revert -d src/database/database.ts"
   },
   "keywords": [],
   "author": "",
@@ -34,6 +37,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.12.0",
+    "cross-env": "^7.0.3",
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-jest": "^28.11.0",
@@ -42,6 +46,7 @@
     "nodemon": "^3.1.9",
     "prettier": "3.4.2",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.22.0"
   },

@@ -16,15 +16,6 @@ app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Initialize TypeORM
-// AppDataSource.initialize()
-//   .then(() => {
-//     console.log("Data Source has been initialized!");
-//   })
-//   .catch((error) => {
-//     console.error("Error during Data Source initialization:", error);
-//   });
-
 // Routes
 // app.use("/api/v1/", routes);
 app.get("/api/v1/test", (req: Request, res: Response) => {
@@ -36,4 +27,12 @@ app.get("/api/v1/test", (req: Request, res: Response) => {
 // Error handling  (should be last)
 // app.use(errorHandler);
 
+// Initialize TypeORM
+// AppDataSource.initialize()
+//   .then(() => {
+//     console.log("Data Source has been initialized!");
+//   })
+//   .catch((error) => {
+//     console.error("Error during Data Source initialization:", error);
+//   });
 export default app;

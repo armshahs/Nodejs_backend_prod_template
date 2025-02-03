@@ -13,9 +13,14 @@ export const AppDataSource = new DataSource({
   entities: config.database.entities,
   migrations: config.database.migrations,
   subscribers: config.database.subscribers,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false, // Allow self-signed certificates (for DigitalOcean, AWS, Heroku, etc.). You can also add it in the DB url
+    },
+  },
   //   poolSize: config.database.poolSize,
-  ssl:
-    config.server.nodeEnv === "production"
-      ? { rejectUnauthorized: false }
-      : false, // for connecting to ssl enabled db
+  // ssl:
+  //   config.server.nodeEnv === "production"
+  //     ? { rejectUnauthorized: false }
+  //     : false, // for connecting to ssl enabled db
 });
