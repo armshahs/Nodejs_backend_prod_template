@@ -4,6 +4,8 @@ import cors from "cors";
 import compression from "compression";
 // import routes from "./routes";
 // import { AppDataSource } from "./database";
+import { errorHandler } from "./middleware";
+import { EntityNotFoundError } from "./errors";
 
 const app = express();
 
@@ -23,16 +25,19 @@ app.get("/api/v1/test", (req: Request, res: Response) => {
     message: "Hello World!",
   });
 });
+app.get("/api/v1/test2", (req: Request, res: Response) => {
+  // throw new Error("Oops");
+  throw new EntityNotFoundError({
+    message: "Entity not found",
+    statusCode: 404,
+    code: "ERR_NF",
+  });
+  res.status(200).json({
+    message: "Hello World!",
+  });
+});
 
-// Error handling  (should be last)
-// app.use(errorHandler);
+// Error handling  (should be last middleware to process requests)
+app.use(errorHandler);
 
-// Initialize TypeORM
-// AppDataSource.initialize()
-//   .then(() => {
-//     console.log("Data Source has been initialized!");
-//   })
-//   .catch((error) => {
-//     console.error("Error during Data Source initialization:", error);
-//   });
 export default app;

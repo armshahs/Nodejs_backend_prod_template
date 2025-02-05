@@ -28,5 +28,6 @@ export const config = {
   server: {
     port: parseInt(process.env.PORT || "3000", 10),
     nodeEnv: process.env.NODE_ENV || "development",
+    debug: process.env.APP_DEBUG === "true",
   },
 };
