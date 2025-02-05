@@ -6,6 +6,7 @@ import compression from "compression";
 // import { AppDataSource } from "./database";
 import { errorHandler } from "./middleware";
 import { EntityNotFoundError } from "./errors";
+import { logger } from "./utils";
 
 const app = express();
 
@@ -21,12 +22,19 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 // app.use("/api/v1/", routes);
 app.get("/api/v1/test", (req: Request, res: Response) => {
+  logger.info('Sample request"');
   res.status(200).json({
     message: "Hello World!",
   });
 });
 app.get("/api/v1/test2", (req: Request, res: Response) => {
   // throw new Error("Oops");
+  logger.error('Entity not found"');
+  logger
+    .child({
+      logMetadata: "User XX",
+    })
+    .error("Entity not found by user");
   throw new EntityNotFoundError({
     message: "Entity not found",
     statusCode: 404,
