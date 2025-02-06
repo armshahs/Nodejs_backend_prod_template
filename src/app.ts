@@ -22,21 +22,21 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 // app.use("/api/v1/", routes);
 app.get("/api/v1/test", (req: Request, res: Response) => {
-  logger.info('Sample request"');
+  logger.info("Sample request");
   res.status(200).json({
     message: "Hello World!",
   });
 });
 app.get("/api/v1/test2", (req: Request, res: Response) => {
   // throw new Error("Oops");
-  logger.error('Entity not found"');
+  logger.error("Entity not found 3");
   logger
     .child({
       logMetadata: "User XX",
     })
-    .error("Entity not found by user");
+    .error("Entity not found by user 3");
   throw new EntityNotFoundError({
-    message: "Entity not found",
+    message: "Entity not found 3",
     statusCode: 404,
     code: "ERR_NF",
   });

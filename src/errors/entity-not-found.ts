@@ -1,4 +1,4 @@
-import { CustomError } from "../errors";
+import { AppError } from "../errors";
 
-class EntityNotFoundError extends CustomError<ErrorCode> {}
+class EntityNotFoundError extends AppError<ErrorCode> {}
 export default EntityNotFoundError;

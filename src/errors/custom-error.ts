@@ -1,4 +1,4 @@
-class CustomError<C extends string> extends Error {
+class AppError<C extends string> extends Error {
   message: string;
   statusCode: number;
   code?: C;
@@ -19,4 +19,4 @@ class CustomError<C extends string> extends Error {
   }
 }
 
-export default CustomError;
+export default AppError;

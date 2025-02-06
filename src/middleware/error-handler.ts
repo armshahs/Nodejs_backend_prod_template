@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { config } from "../config";
 import { getErrorMessage } from "../utils";
-import { CustomError } from "../errors/";
+import { AppError } from "../errors/";
 
 // Default error handler for entire Nodejs app
 export default function errorHandler(
@@ -15,7 +15,7 @@ export default function errorHandler(
     return;
   }
 
-  if (error instanceof CustomError) {
+  if (error instanceof AppError) {
     res.status(error.statusCode).json({
       error: {
         message: error.message,

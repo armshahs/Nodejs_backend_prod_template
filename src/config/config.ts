@@ -29,6 +29,12 @@ export const config = {
     port: parseInt(process.env.PORT || "3000", 10),
     nodeEnv: process.env.NODE_ENV || "development",
     debug: process.env.APP_DEBUG === "true",
+  },
+  logging: {
     logLevel: process.env.LOG_LEVEL || "error",
+    logtailToken: process.env.LOGTAIL_TOKEN || "Pvm9CYft2mcKfQFnCnm7fJGn",
+    logtailEndpoint:
+      process.env.LOGTAIL_INGESTION_ENDPOINT ||
+      "https://s1194431.eu-nbg-2.betterstackdata.com/",
   },
 };
