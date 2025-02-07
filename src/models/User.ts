@@ -1,9 +1,26 @@
+// import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+
+// @Entity()
+// export class User {
+//   @PrimaryGeneratedColumn()
+//   id!: number;
+
+//   @Column({ unique: true })
+//   email!: string;
+
+//   @Column()
+//   password!: string;
+
+//   @Column()
+//   description!: string;
+// }
+
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn("uuid")
+  id!: string;
 
   @Column({ unique: true })
   email!: string;
@@ -11,6 +28,6 @@ export class User {
   @Column()
   password!: string;
 
-  @Column()
-  description!: string;
+  @Column({ nullable: true })
+  resetToken?: string;
 }

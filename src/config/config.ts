@@ -37,4 +37,12 @@ export const config = {
       process.env.LOGTAIL_INGESTION_ENDPOINT ||
       "https://s1194431.eu-nbg-2.betterstackdata.com/",
   },
+  auth: {
+    jwtSecret: process.env.JWT_SECRET || "",
+  },
+  email: {
+    emailUser: process.env.EMAIL_USER || "",
+    emailPassword: process.env.EMAIL_PASSWORD || "",
+    emailClientUrl: process.env.EMAIL_CLIENT_URL || "",
+  },
 };
