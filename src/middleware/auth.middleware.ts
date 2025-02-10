@@ -1,6 +1,6 @@
 import { Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { config } from "../config";
+import { config, RoleType } from "../config";
 import { AuthRequest } from "../interfaces";
 
 export const authenticateJWT = (
@@ -22,7 +22,8 @@ export const authenticateJWT = (
 
     // Make sure the decoded value matches the type
     // console.log(decoded);
-    req.user = decoded as { id: string };
+    req.user = decoded as { id: string; role: RoleType };
+    // console.log(req.user);
     next();
   });
 };
