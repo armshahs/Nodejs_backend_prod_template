@@ -11,7 +11,8 @@ export class AuthService {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = userRepository.create({ email, password: hashedPassword });
     await userRepository.save(user);
-    return generateToken(user.id);
+    const token = generateToken(user.id);
+    return { token, userId: user.id }; // Return both token and userId
   }
 
   static async login(email: string, password: string) {
@@ -19,7 +20,8 @@ export class AuthService {
     if (!user || !(await bcrypt.compare(password, user.password))) {
       throw new Error("Invalid credentials");
     }
-    return generateToken(user.id);
+    const token = generateToken(user.id);
+    return { token, userId: user.id }; // Return both token and userId
   }
 
   static async getUserDetails(userId: string) {
